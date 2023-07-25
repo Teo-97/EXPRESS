@@ -1,17 +1,15 @@
 const express = require("express");
 const app = express();
 
-const tasks = [
-  { id: "123456", isCompleted: false, description: "Walk the dog" },
-  { id: "789012", isCompleted: true, description: "Buy groceries" },
-  { id: "345678", isCompleted: false, description: "Read a book" },
-];
+const listViewRouter = require("./list-view-router");
+const listEditRouter = require("./list-edit-router");
 
-app.get("/tasks", (req, res) => {
-  res.json(tasks);
-});
+app.use(express.json());
 
-const port = 3000;
+app.use("/tasks/view", listViewRouter);
+app.use("/tasks/edit", listEditRouter);
+
+const port = 5000;
 app.listen(port, () => {
   console.log(`Servidor en ejecución en http://localhost:${port}`);
 });
