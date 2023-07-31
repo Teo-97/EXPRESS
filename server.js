@@ -22,6 +22,8 @@ app.use(express.json());
 app.use("/tasks/view", listViewRouter);
 app.use("/tasks/edit", listEditRouter);
 
+app.post("/login");
+
 const port = 5000;
 app.listen(port, () => {
   console.log(`Servidor en ejecución en http://localhost:${port}`);
